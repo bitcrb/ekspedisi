@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mengarahkan...</title>
     <script>
-        // URL Web App Google Script Anda
-        const targetUrl = "https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec";
+        // URL Web App Google Script
+        const baseUrl = "https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec";
         
-        // Memaksa penanganan multi-akun Google dengan parameter authuser=0
-        const finalUrl = targetUrl + "?authuser=0";
+        // Menambahkan parameter prompt=select_account untuk memutus cookie sesi lama
+        const redirectUrl = baseUrl + "?prompt=select_account";
 
         // Mengalihkan halaman
-        window.location.replace(finalUrl);
+        window.location.replace(redirectUrl);
     </script>
 </head>
 <body>
@@ -21,7 +21,7 @@
         <p>Jika tidak teralihkan otomatis, <a id="manualLink" href="#">klik di sini</a>.</p>
     </div>
     <script>
-        document.getElementById("manualLink").href = finalUrl;
+        document.getElementById("manualLink").href = redirectUrl;
     </script>
 </body>
 </html>
