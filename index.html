@@ -5,46 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mengarahkan...</title>
     
-    <!-- Meta refresh ke URL Apps Script yang baru -->
-    <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec">
-    
     <script>
-        // JavaScript redirect ke URL Apps Script yang baru
-        window.location.href = "https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec";
+        // URL Web App Google Script Anda (tanpa parameter di ujungnya)
+        const baseUrl = "https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec";
+
+        // Mengambil parameter URL saat ini (misal: ?authuser=1 atau ?authuser=nama@gmail.com)
+        const urlParams = new URLSearchParams(window.location.search);
+        const authUser = urlParams.get('authuser');
+
+        // Jika parameter authuser ada, tambahkan ke URL tujuan. Jika tidak ada, default ke authuser=0
+        const finalUrl = authUser 
+            ? `${baseUrl}?authuser=${encodeURIComponent(authUser)}` 
+            : `${baseUrl}?authuser=0`;
+
+        // Redirect otomatis
+        window.location.href = finalUrl;
     </script>
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f7;
-            color: #333;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <p>Mengarahkan Anda ke aplikasi Google Script...</p>
-        <p>Jika tidak teralihkan secara otomatis, <a href="https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec">klik di sini</a>.</p>
-    </div>
+    <p>Mengarahkan Anda ke aplikasi...</p>
 </body>
 </html>
