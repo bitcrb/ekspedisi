@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mengarahkan...</title>
-    
     <script>
-        // URL Web App Google Script Anda (tanpa parameter di ujungnya)
-        const baseUrl = "https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec";
+        // URL Web App Google Script Anda
+        const targetUrl = "https://script.google.com/macros/s/AKfycbwEhChYk4-wRkvjIRvkCQ4GyDtXO_INziOB67q36Sz668K4vDCCMxd9lRxIHLNZoeEprw/exec";
+        
+        // Memaksa penanganan multi-akun Google dengan parameter authuser=0
+        const finalUrl = targetUrl + "?authuser=0";
 
-        // Mengambil parameter URL saat ini (misal: ?authuser=1 atau ?authuser=nama@gmail.com)
-        const urlParams = new URLSearchParams(window.location.search);
-        const authUser = urlParams.get('authuser');
-
-        // Jika parameter authuser ada, tambahkan ke URL tujuan. Jika tidak ada, default ke authuser=0
-        const finalUrl = authUser 
-            ? `${baseUrl}?authuser=${encodeURIComponent(authUser)}` 
-            : `${baseUrl}?authuser=0`;
-
-        // Redirect otomatis
-        window.location.href = finalUrl;
+        // Mengalihkan halaman
+        window.location.replace(finalUrl);
     </script>
 </head>
 <body>
-    <p>Mengarahkan Anda ke aplikasi...</p>
+    <div style="text-align: center; margin-top: 20%; font-family: sans-serif;">
+        <p>Mengarahkan Anda ke aplikasi...</p>
+        <p>Jika tidak teralihkan otomatis, <a id="manualLink" href="#">klik di sini</a>.</p>
+    </div>
+    <script>
+        document.getElementById("manualLink").href = finalUrl;
+    </script>
 </body>
 </html>
